@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/12f1d3013b.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Events</title>
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        body {
+            /*background-color: black;*/
+            font-family: 'Poppins', sans-serif;
+
+
+        }
+
+        .main-bar {
+            background-color: #22272b !important;
+            display: flow-root;
+            padding: 0 10%;
+
+            width: 100%;
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .logo-header {
+            display: table;
+            float: left;
+            vertical-align: middle;
+            padding: 0;
+            color: #efbb20;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 180px;
+            height: 68px;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+
+        }
+
+        .logo-header:before {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: -50px;
+            width: 50%;
+            transform: skew(30deg);
+            background-color: #ffe10a;
+        }
+
+        .logo-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: 10%;
+            width: 2000px;
+            background-color: #ffe10a;
+        }
+
+        .logo-header a {
+            text-decoration: none;
+            color: #22272b;
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 0px;
+            position: relative;
+            left: -50px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 100px;
+            border-radius: 14px;
+
+        }
+
+        nav li.active a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+        nav li a {
+            padding: 15px 25px;
+            border: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            opacity: 1;
+            text-decoration: none;
+            transition: all 0.5s;
+            border-radius: 14px;
+        }
+
+        nav li:hover a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+
+
+        @media(max-width:1250px) {
+            .main-bar {
+                padding: 0 2%;
+            }
+
+            nav li a {
+                padding: 15px 20px;
+            }
+        }
+
+        .checkbtn {
+            float: right;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            top: 25px;
+            display: none;
+        }
+
+        .checkbtn span {
+            background-color: #fff;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0);
+            transition: 0.25s ease-in-out;
+        }
+
+        .checkbtn span:nth-child(1) {
+            top: 0;
+        }
+
+        .checkbtn span:nth-child(2) {
+            top: 7px;
+        }
+
+        .checkbtn span:nth-child(3) {
+            top: 14px;
+        }
+
+
+
+        @media(max-width:992px) {
+            .main-bar {
+                padding: 0 10%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 40px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 350px;
+                height: 100vh;
+                background: #22272b;
+                top: 68px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                z-index: 999;
+            }
+            .logo-header a{
+                left: auto;
+            }
+        }
+
+        @media(max-width:400px) {
+            .checkbtn {
+                display: block;
+                margin-right: 0px;
+            }
+            .main-bar{
+                
+            }
+        }
+
+        @media(max-width:320px) {
+            nav ul {
+                display: block;
+                width: 100%;
+                margin-top: 20px;
+                z-index: 999;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: -10px;
+            }
+
+        }
+
+        /* Countdown */
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+        }
+
+        .container {
+            height: 80vh;
+            margin: 30px;
+
+            background: url(https://i.pinimg.com/originals/f4/30/74/f430749764a33f7afed04d8d959203c0.jpg) no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .container h2 {
+            text-align: center;
+            font-size: 5em;
+            line-height: 0.7em;
+            color: #333;
+            margin-top: -80px;
+        }
+
+        .container h2 span {
+            display: block;
+            font-weight: 300;
+            letter-spacing: 6px;
+            font-size: 0.2em;
+        }
+
+        .countdown {
+            display: flex;
+            margin-top: 50px;
+
+        }
+
+        .countdown div {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background: #333;
+            color: #fff;
+            margin: 0 15px;
+            font-size: 4em;
+            font-weight: 300;
+        }
+
+        .countdown div::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -30px;
+            width: 100%;
+            height: 35px;
+            background: #ff0;
+            color: #333;
+            font-size: 0.35em;
+            line-height: 35px;
+            font-weight: 300;
+        }
+
+        .countdown div#day::before {
+            content: 'Days';
+        }
+
+        .countdown div#hour::before {
+            content: 'Hours';
+        }
+
+        .countdown div#minute::before {
+            content: 'Minutes';
+        }
+
+        .countdown div#second::before {
+            content: 'Seconds';
+        }
+
+        .lorem {
+            display: flow-root;
+        }
+
+        @media(max-width:500px) {
+            .container {
+                margin-top: 100px;
+                background: none;
+            }
+
+            .container h2 {
+                font-size: 4em;
+                line-height: 1.2;
+                color: white;
+            }
+
+            .countdown {
+                display: grid;
+                grid-template-columns: 150px 150px;
+                row-gap: 50px;
+            }
+        }
+
+        /* VIDEOS */
+        .event-heading h1 {
+            font-size: 4em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 40px;
+
+            background-color: #4158D0;
+            background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .video-1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            padding: 20px;
+
+        }
+
+        .video-text {
+            width: 600px;
+            padding: 20px;
+            text-align: left;
+            line-height: 1.7;
+            color: #ccc;
+            font-weight: 100;
+        }
+
+        .upcoming-events-text h1 {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            font-size: 3.5em;
+        }
+
+        .upcoming-events-text p {
+            font-size: 2em;
+            text-align: center;
+            color: white;
+            margin: auto;
+            margin-top: 30px;
+            width: 900px;
+
+        }
+
+        @media(max-width:500px) {
+            .video-1 {
+                display: flex;
+                flex-direction: column;
+
+            }
+
+            .vid iframe {
+                width: 300px;
+                margin: auto;
+                margin-right: auto;
+
+            }
+
+            .video-text {
+                width: 300px;
+                margin: auto;
+                margin-right: auto;
+            }
+
+            .upcoming-events-text {
+                width: 300px;
+                margin: auto;
+                margin-right: auto;
+            }
+
+
+
+            .upcoming-events-text p {
+                width: 250px;
+                margin: auto;
+                margin-right: auto;
+            }
+        }
+
+        .upcoming-events-text h1 {
+            text-transform: uppercase;
+            font-size: 4em;
+            margin-top: 50px;
+            background-color: #4158D0;
+            background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 350px;
+            margin: auto;
+            margin-top: 3pc;
+            margin-bottom: 20px;
+            border: 3px solid rgba(24, 99, 255, 0.1);
+            padding-bottom: 10px;
+            border-radius: 50px;
+            line-height: 3.5;
+            background: white;
+        }
+
+        .upcoming-events-card {
+            display: grid;
+            place-content: center;
+            gap: 300px;
+            grid-template-columns: 300px 300px;
+        }
+
+        .upcoming-events-text p {
+            margin-bottom: 30px;
+        }
+
+        .pricing h1 {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .p-img {
+            background: url(https://thumbs.dreamstime.com/b/male-hand-holding-megaphone-quiz-time-speech-bubble-loudspeaker-banner-business-marketing-advertising-vector-125104939.jpg);
+            padding: 70px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .pricing button {
+            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            background-color: black;
+            border-radius: 50px;
+        }
+
+        .pricing button a {
+            color: white;
+        }
+
+        .pricing-1 button a {
+            color: white;
+        }
+
+
+        .pricing-1 {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 350px;
+            margin: auto;
+            margin-bottom: 20px;
+            margin-top: 3pc;
+            border: 3px solid rgba(24, 99, 255, 0.1);
+            padding-bottom: 10px;
+            border-radius: 50px;
+            line-height: 3.5;
+            background: white;
+        }
+
+        .pricing-1 button {
+            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            background-color: black;
+            border-radius: 50px;
+        }
+
+        .p-img-1 {
+            background: url(data:image/jpeg;base64,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);
+            padding: 70px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        @media(max-width:500px) {
+            .upcoming-events-card {
+                display: flow-root;
+            }
+
+            .upcoming-events-text h1 {
+                font-size: 3rem;
+            }
+
+            .upcoming-events-text p {
+                font-size: 1em;
+                line-height: 1.9;
+                margin-top: 20px;
+
+            }
+
+            .pricing {
+                width: 310px;
+                margin: auto;
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+
+            .pricing-1 {
+                width: 310px;
+                margin: auto;
+                margin-bottom: 20px;
+            }
+
+            .event-heading h1 {
+                font-size: 3rem;
+                margin-top: 100px;
+                margin-bottom: -20px;
+            }
+
+            .video-text {
+                text-align: center;
+            }
+
+            .upcoming-events-card {}
+
+            .container {}
+        }
+
+        /* FOOTER*/
+        footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            background: #3586ff;
+            min-height: 100px;
+            padding: 0px 0px;
+
+        }
+
+        footer .social_icons,
+        footer .menu-footer {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        footer .social_icons li,
+        footer .menu-footer li {
+            list-style: none;
+        }
+
+        footer .social_icons li a,
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        footer .social_icons li a:hover {
+            transform: translateY(-10px);
+            color: red;
+        }
+
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+        }
+
+        footer .menu-footer li a:hover {
+            opacity: 1;
+        }
+
+        footer p {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        footer .wave {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url(wave-1.png);
+            background-size: 1000px 100px;
+        }
+
+        footer .wave#wave1 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave2 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 10px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        footer .wave#wave3 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave4 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 20px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        @keyframes animateWave {
+            0% {
+                background-position-x: 1000px;
+            }
+
+            100% {
+                background-position-x: 0px;
+            }
+        }
+
+        @keyframes animateWave_02 {
+            0% {
+                background-position-x: 0px;
+            }
+
+            100% {
+                background-position-x: 1000px;
+            }
+        }
+
+        @media(max-width:500px) {
+            .menu-footer {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .gotop {
+                display: none;
+            }
+        }
+
+        @media(max-width:330px) {
+            footer .social_icons {
+                display: flex;
+            }
+        }
+
+        .footer-image img {
+            margin-top: 80px;
+            height: 200px;
+            width: 300px;
+        }
+
+        .section {
+            width: 100%;
+            height: 300vh;
+
+        }
+
+        .gotop {
+            color: white;
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: #27ae60 no-repeat;
+
+            bottom: 30px;
+            right: 50px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            border-radius: 50px;
+
+        }
+        /* PRE LOADER*/
+        #preloader {
+            background: black url(https://cdn.dribbble.com/users/144245/screenshots/3464390/loading.gif);
+            border: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+
+        @media(max-width:500px) {
+            #preloader {
+                padding: 0;
+                margin: 0;
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class=".section">
+
+    </section>
+    <a class="gotop" href="#"><i class="fas fa-arrow-up"></i> </a>
+    <div class="scrolltotop"></div>
+
+    <!--NAV BAR-->
+    <div class="main-bar">
+        <nav>
+            <input id="check" type="checkbox">
+            <label for="check" class="checkbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-header">
+                <a href="index.html"><img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png"></a>
+
+            </div>
+
+            <ul>
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="event.html">Events</a> </li>
+                <li><a href="team.html">Team</a> </li>
+                <li><a href="contact.html" target="blank">Contact Us</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+                <li><a href="certificate.html">Verify Certificates</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <h2><span>Countdown To The Event</span>Quiz and Debate</h2>
+        <div class="countdown">
+            <div id="day">NA</div>
+            <div id="hour">NA</div>
+            <div id="minute">NA</div>
+            <div id="second">NA</div>
+        </div>
+    </div>
+    <div class="event-heading">
+        <h1>Previous Events</h1>
+    </div>
+    <div class="videos">
+        <div class="video-1">
+            <div class="vid" data-aos="zoom-out" data-aos-duration="2000">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IZEgZP787RU"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-text" data-aos="zoom-in" data-aos-duration="2000">
+                <h1>
+                    C Language Workshop Day-1
+                </h1>
+                <p>We conducted a event on 'C Programming' expertise under the agis of student organization cell. The
+                    workshop was conducted for two consecutive
+                    days from 12 Sep 2021 to 13 Sep
+                    2021. The event timing was from 6 p.m. to 8 p.m. for both the days. In this workshop, we covered all
+                    the
+                    important topics of C language as well as its importance and uses in career development. We had more
+                    than 500 participants for the workshop. The presentation was directly streamed on our official
+                    YouTube
+                    channel. Participants asked their doubts through the chat and the cheif guest clarified them in
+                    order.</p>
+            </div>
+        </div>
+        <div class="video-1">
+            <div class="video-text" data-aos="zoom-in" data-aos-duration="2000">
+                <h1>
+                    C Language Workshop Day-2
+                </h1>
+                <p>This was the continuation for the 'C Programming' expertise workshop. Our goal was to maximise the
+                    reach of people who would get benefited from the workshop and we are happy to announce that we got a
+                    huge response from the studets throught the workshop. we covered the rest topics that were left on
+                    day-1. The
+                    presentation was directly streamed on our official YouTube
+                    channel. We provided certificate of participantion for
+                    those who attended the workshop and we also awareded certificate of appreciation for the students
+                    who qualified the exam conducted by us after the workshop</p>
+            </div>
+            <div class="vid" data-aos="zoom-out" data-aos-duration="2000">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IZEgZP787RU"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
+    <div class="upcoming-events">
+        <div class="upcoming-events-text">
+            <h1>Upcoming Events</h1>
+            <p>“Limitations live only in our minds. But if we use our imaginations, our possibilities become limitless.”
+            </p>
+        </div>
+    </div>
+    <div class="upcoming-events-card">
+
+        <div class="pricing">
+            <h1>QUIZ</h1>
+            <p class="p-img"></p>
+            <p>7th-8th November</p>
+            <p>Online Competetion</p>
+            <p>Comfort From Your Home</p>
+            <p>Perks will be provided</p>
+            <button><a href="#">REGISTER NOW</a></button>
+
+        </div>
+        <div class="pricing-1">
+            <h1>DEBATE</h1>
+            <p class="p-img-1"></p>
+            <p>7th-8th November</p>
+            <p>Online Competetion</p>
+            <p>Comfort From Your Home</p>
+            <p>Perks will be provided</p>
+            <button><a href="#">REGISTER NOW</a></button>
+
+        </div>
+
+    </div>
+
+    <!--FOOTER-->
+    <footer>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <div class="footer-image">
+            <img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png">
+        </div>
+        <ul class="social_icons">
+            <li><a href="#">
+                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                </a></li>
+            <li><a href="#">
+                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                </a></li>
+            <li><a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a></li>
+            <li><a href="#">
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                </a></li>
+            <li><a href="#">
+                    <i class="fa fa-telegram" aria-hidden="true"></i>
+                </a></li>
+        </ul>
+        <ul class="menu-footer">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About US</a></li>
+        </ul>
+        <p>® TpTe All Rights Reserved.</p>
+    </footer>
+
+
+
+
+
+    <script type="text/javascript">
+        var countDate = new Date('nov 7, 2021, 11:28:00').getTime();
+        function newYear() {
+
+            var now = new Date().getTime();
+            gap = countDate - now;
+            var second = 1000;
+            var minute = second * 60;
+            var hour = minute * 60;
+            var day = hour * 24;
+
+
+            var d = Math.floor(gap / (day));
+            var h = Math.floor((gap % (day)) / (hour));
+            var m = Math.floor((gap % (hour)) / (minute));
+            var s = Math.floor((gap % (minute)) / second);
+
+            document.getElementById('day').innerText = d;
+            document.getElementById('hour').innerText = h;
+            document.getElementById('minute').innerText = m;
+            document.getElementById('second').innerText = s;
+        }
+        setInterval(function () {
+            newYear();
+        }, 1000)
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+      <!--Preloader-->
+      <div id="preloader"></div>
+      <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+</body>
+
+</html>

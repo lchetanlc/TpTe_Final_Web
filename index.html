@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Programmer Tomorrow's Engineer</title>
+    <link rel="icon" href="TpTe_Logo-removebg-preview.png" type="image/x-icon">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+
+        :root {
+            --main-color: #d3ad7f;
+            /* --black: #13131a; */
+            /* --bg: #010103; */
+            --border: .1rem solid rgba(255, 255, 255, .3);
+        }
+
+        /* PRE LOADER*/
+        #preloader {
+            background: black url(https://cdn.dribbble.com/users/144245/screenshots/3464390/loading.gif);
+            border: none;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+
+        @media(max-width:500px) {
+            #preloader {
+                padding: 0;
+                margin: 0;
+                margin: auto;
+            }
+        }
+
+        /*NAV BAR*/
+
+        body {
+            background-color: black;
+            font-family: 'Poppins', sans-serif;
+
+
+        }
+
+        .main-bar {
+            background-color: #22272b !important;
+            display: flow-root;
+            padding: 0 10%;
+
+            width: 100%;
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .logo-header {
+            display: table;
+            float: left;
+            vertical-align: middle;
+            padding: 0;
+            color: #efbb20;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 180px;
+            height: 68px;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+
+        }
+
+        .logo-header:before {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: -50px;
+            width: 50%;
+            transform: skew(30deg);
+            background-color: #ffe10a;
+        }
+
+        .logo-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: 10%;
+            width: 2000px;
+            background-color: #ffe10a;
+        }
+
+        .logo-header a {
+            text-decoration: none;
+            color: #22272b;
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 0px;
+            position: relative;
+            left: -50px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 100px;
+            border-radius: 14px;
+
+        }
+
+        nav li.active a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+        nav li a {
+            padding: 15px 25px;
+            border: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            opacity: 1;
+            text-decoration: none;
+            transition: all 0.5s;
+            border-radius: 14px;
+        }
+
+        nav li:hover a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+
+
+        @media(max-width:1250px) {
+            .main-bar {
+                padding: 0 2%;
+            }
+
+            nav li a {
+                padding: 15px 20px;
+            }
+        }
+
+        .checkbtn {
+            float: right;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            top: 25px;
+            display: none;
+        }
+
+        .checkbtn span {
+            background-color: #fff;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0);
+            transition: 0.25s ease-in-out;
+        }
+
+        .checkbtn span:nth-child(1) {
+            top: 0;
+        }
+
+        .checkbtn span:nth-child(2) {
+            top: 7px;
+        }
+
+        .checkbtn span:nth-child(3) {
+            top: 14px;
+        }
+
+
+
+        @media(max-width:992px) {
+            .main-bar {
+                padding: 0 10%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 40px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 350px;
+                height: 100vh;
+                background: #22272b;
+                top: 68px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: block;
+                width: 100%;
+                z-index: 9999;
+                margin-top: 36px;
+            }
+            .logo-header a{
+                left: auto;
+            }
+        }
+
+        @media(max-width:400px) {
+            .checkbtn {
+                display: block;
+                margin-right: 0px;
+            }
+        }
+
+        @media(max-width:320px) {
+            nav ul {
+                display: block;
+                width: 100%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: -10px;
+            }
+
+        }
+
+        /* HOME PAGE STYLING */
+        .home {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: url(undraw_voice_interface_eckp.svg) no-repeat;
+            background-position: right;
+            background-size: 580px;
+            margin: auto;
+            margin: 50px;
+
+
+        }
+
+        .home .content {
+            max-width: 60rem;
+            margin-top: 100px;
+        }
+
+        .home .content h3 {
+            font-size: 3.5rem;
+            padding: 20px;
+            text-transform: uppercase;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .home .content p {
+            font-size: 1.5rem;
+            width: 850px;
+            margin: 20px;
+            font-weight: lighter;
+            line-height: 1.5;
+            padding: 1rem 0;
+            color: #eee;
+        }
+
+        .btn-home {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .9rem 2rem;
+            font-size: 1.3rem;
+            color: #fff;
+            background: #d3ad7f;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin: 20px;
+        }
+
+        .btn-home:hover {
+            letter-spacing: .2rem;
+        }
+
+        /*ABOUT*/
+
+        .about .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .about {
+            margin: 50px;
+            margin-top: 50px;
+
+        }
+
+        .about .row .image {
+            flex: 1 1 20rem;
+
+        }
+
+        .about .row .image img {
+
+            height: 500px;
+            border-radius: 10%;
+            position: relative;
+            left: 100px;
+            margin-top: 50px;
+        }
+
+        .about .row .content-about {
+            flex: 1 1 25rem;
+            padding: 2rem;
+            margin-top: 50px;
+
+        }
+
+        .about .row .content-about h3 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .about .row .content-about p {
+            font-size: 1.3rem;
+            color: #ccc;
+            padding: 1rem 0;
+            line-height: 1.6;
+        }
+
+        .content-about .btn-home {
+            padding: 10px;
+            display: grid;
+            margin: 0;
+            text-align: center;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 3.5rem;
+            margin-top: 30px;
+        }
+
+
+        /* FORD CARD */
+        .heading-card {
+            text-align: center;
+            line-height: 1.9;
+            color: white;
+
+        }
+
+        .head-card p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            color: #a3a5ae;
+        }
+
+
+        .card-1 {
+            padding: 40px;
+            box-shadow: rgb(105 139 184 / 24%) 0px 3px 20px;
+            width: 400px;
+            border: 1px;
+            border-top: 4px solid hsl(180deg 70% 57%);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .card-2 {
+            padding: 40px;
+            box-shadow: rgb(105 139 184 / 24%) 0px 3px 20px;
+            width: 400px;
+            border: 1px;
+            border-top: 4px solid #ea5353;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .card-3 {
+            padding: 40px;
+            box-shadow: rgb(105 139 184 / 24%) 0px 3px 20px;
+            width: 400px;
+            border: 1px;
+            border-top: 4px solid #FFEA00;
+            border-radius: 10px;
+            color: white;
+
+        }
+
+        .card-4 {
+            padding: 40px;
+            box-shadow: rgb(105 139 184 / 24%) 0px 3px 20px;
+            width: 400px;
+            border: 1px;
+            border-top: 4px solid #00008B;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .double {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+
+        }
+
+        .main-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 70px;
+            margin-top: 40px;
+            margin-bottom: 70px;
+        }
+
+        .image-card {
+            display: flex;
+            padding: 10px;
+            margin-left: auto;
+        }
+
+        @media (max-width:500px) {
+            .main-card {
+                display: flex;
+                flex-direction: column;
+
+
+            }
+
+            .card-1,
+            .card-2,
+            .card-3,
+            .card-4 {
+                width: 300px;
+                margin: auto;
+            }
+
+            .about .row .image {
+                max-width: 340px;
+                margin: auto;
+            }
+
+            .about {
+                width: 320px;
+                margin: auto;
+            }
+
+            .content-about {
+                text-align: center;
+            }
+
+            .about .row .image img {
+                height: 300px;
+                margin-top: 30px;
+                left: 0;
+            }
+
+        }
+
+
+        @media(max-width:1030px) {
+            .home .content h3 {
+
+                max-width: 300px;
+            }
+
+            .home .content p {
+                max-width: 500px;
+            }
+        }
+
+        @media(max-width:900px) {
+            .home {
+                background: none;
+                margin: auto;
+            }
+
+            .home .content h3 {
+                font-size: 30px;
+
+                text-align: center;
+                margin: auto;
+            }
+
+            .home .content p {
+                margin: auto;
+                font-size: 20px;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .btn-home {
+                text-align: center;
+                display: flow-root;
+            }
+        }
+
+
+        /* FOOTER */
+        footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            background: #3586ff;
+            min-height: 100px;
+            padding: 0px 0px;
+
+        }
+
+        footer .social_icons,
+        footer .menu-footer {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        footer .social_icons li,
+        footer .menu-footer li {
+            list-style: none;
+        }
+
+        footer .social_icons li a,
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        footer .social_icons li a:hover {
+            transform: translateY(-10px);
+            color: red;
+        }
+
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+        }
+
+        footer .menu-footer li a:hover {
+            opacity: 1;
+        }
+
+        footer p {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        footer .wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url(wave-1.png);
+            background-size: 1000px 100px;
+        }
+
+        footer .wave#wave1 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave2 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 10px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        footer .wave#wave3 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave4 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 20px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        @keyframes animateWave {
+            0% {
+                background-position-x: 1000px;
+            }
+
+            100% {
+                background-position-x: 0px;
+            }
+        }
+
+        @keyframes animateWave_02 {
+            0% {
+                background-position-x: 0px;
+            }
+
+            100% {
+                background-position-x: 1000px;
+            }
+        }
+
+        @media(max-width:500px) {
+            .menu-footer {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .gotop {
+                display: none;
+            }
+        }
+
+        .footer-image img {
+            height: 200px;
+            width: 300px;
+        }
+
+        .section {
+            width: 100%;
+            height: 300vh;
+
+        }
+
+        .gotop {
+            color: white;
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: #27ae60 no-repeat;
+
+            bottom: 30px;
+            right: 50px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            border-radius: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section class=".section">
+
+
+        <a class="gotop" href="#"><i class="fa fa-arrow-up"></i> </a>
+        <div class="scrolltotop"></div>
+    </section>
+
+    
+    <!--Preloader-->
+    <div id="preloader"></div>
+    <!--NAV BAR-->
+    <div class="main-bar">
+        <nav>
+            <input id="check" type="checkbox">
+            <label for="check" class="checkbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-header">
+                <a href="index.html"><img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png"></a>
+
+            </div>
+
+            <ul>
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="event.html">Events</a> </li>
+                <li><a href="team.html">Team</a> </li>
+                <li><a href="contact.html" target=”_blank”>Contact Us</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+                <li><a href="certificate.html">Verify Certificates</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!--HOME PAGE-->
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <h3>Today's Programmer Tomorrow's Engineer</h3>
+            <p>TpTe is an organization where intelligence meets creativity .Today's Programmer Tomorrow's Engineer is
+                made up
+                of 2 words Programmer and engineer which is to be implemented by today for tomorrow.</p>
+            <a href="about.html" class="btn-home">Click Here to know more</a>
+        </div>
+
+
+    </section>
+
+    <!--ABOUT-->
+
+
+    <section class="about" id="about">
+
+        <h1 class="heading"> <span style="color: #d3ad7f;">ABOUT</span> US </h1>
+
+        <div class="row">
+
+            <div class="image">
+                <img src="image.jpg" alt="">
+            </div>
+
+            <div class="content-about">
+                <h3>what makes our organization special?</h3>
+                <p>Our vision is to create an organisation in which we can learn, teach, grow and inspire together. 
+                    To be more presice and clear, TPTE is not only an organization it's a emotion of hard working team...</p>
+                <p>Education can be achieved not received… knowledge can be gained not snatched… focus can be developed
+                    not fetched… student can be excelled not parroted. our ultimate Motto is to find and give the right
+                    direction to build yourself with the experience of our team members. we organise various events
+                    related to technical ,non technical and academic as we believe in quality not quantity …</p>
+                <a href="#" class="btn-home">learn more</a>
+            </div>
+
+        </div>
+
+    </section>
+    <!--FOUR CARD-->
+    <div class="heading-card">
+        <h1 style="color: #585661;font-weight: 200; ">Reliable, Efficient and Experienced</h1>
+        <h1>Powered by Lovely Professional University</h1>
+        <p class="head-card">Under the agis of Student Organization Cell</p>
+    </div>
+    <div class="main-card">
+        <div class="card-1">
+            <h2>MOTO</h2>
+            <p style="line-height: 1.8;margin-top: 20px;">The reason we exist uniquely as a
+                organization, and it reflects the imprint we will leave on the world.
+                TpTe is the student organization which is "by the student" ,"for the student" and "to the student"</p>
+            <img class="image-card" src="icon-supervisor.svg">
+
+        </div>
+        <div class="double">
+            <div class="card-2">
+                <h2>MISSION</h2>
+                <p style="line-height: 1.8;margin-top: 20px;">To delibtrately access as Best Organization that serves
+                    the society for years -may be perennially. To
+                    Make India Global Leader In Education, both In Not For Profit as well as For Profit Ventures.</p>
+                <img src="icon-team-builder.svg" class="image-card">
+            </div>
+            <div class="card-3">
+                <h2>VISION</h2>
+                <p style="line-height: 1.8;margin-top: 20px;">Keeping our mission in mind. we will establish a
+                    transformational leadership position in each of our
+                    projects across the range & pursue as a Comprehensive Global Leader In Education.
+
+                </p>
+                <img src="icon-karma.svg" class="image-card">
+
+            </div>
+        </div>
+        <div class="card-4">
+            <h2>Plan</h2>
+            <p style="line-height: 1.8;margin-top: 20px;">It is our purpose, the reason we exist uniquely as a
+                organization, and it reflects the imprint we will leave on the world.
+                TpTe is the student organization which is "by the student" ,"for the student" and "to the student"</p>
+            <img src="icon-calculator.svg" class="image-card">
+        </div>
+    </div>
+
+
+    <!--FOOTER-->
+
+    <footer>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <div class="footer-image">
+            <img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png">
+        </div>
+        <ul class="social_icons">
+            <li><a href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+        </ul>
+        <ul class="menu-footer">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About US</a></li>
+        </ul>
+        <p>® TpTe All Rights Reserved.</p>
+    </footer>
+
+
+    <script>
+        var loader = document.getElementById("preloader");
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
+    </script>
+
+
+</body>
+
+</html>

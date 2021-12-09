@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Team Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        /* NAVIGATION BAR */
+        .main-bar {
+            background-color: #22272b !important;
+            display: flow-root;
+            padding: 0 10%;
+
+            width: 100%;
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .logo-header {
+            display: table;
+            float: left;
+            vertical-align: middle;
+            padding: 0;
+            color: #efbb20;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 180px;
+            height: 68px;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+
+        }
+
+        .logo-header:before {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: -50px;
+            width: 80%;
+            transform: skew(30deg);
+            background-color: #ffe10a;
+        }
+
+        .logo-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: 10%;
+            width: 2000px;
+            background-color: #ffe10a;
+        }
+
+        .logo-header a {
+            text-decoration: none;
+            color: #22272b;
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 0px;
+            position: relative;
+            left: -50px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 100px;
+            border-radius: 14px;
+
+        }
+
+        nav li.active a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+        nav li a {
+            padding: 15px 25px;
+            border: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            opacity: 1;
+            text-decoration: none;
+            transition: all 0.5s;
+            border-radius: 14px;
+        }
+
+        nav li:hover a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+
+
+        @media(max-width:1250px) {
+            .main-bar {
+                padding: 0 2%;
+            }
+
+            nav li a {
+                padding: 15px 20px;
+            }
+        }
+
+        .checkbtn {
+            float: right;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            top: 25px;
+            display: none;
+        }
+
+        .checkbtn span {
+            background-color: #fff;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0);
+            transition: 0.25s ease-in-out;
+        }
+
+        .checkbtn span:nth-child(1) {
+            top: 0;
+        }
+
+        .checkbtn span:nth-child(2) {
+            top: 7px;
+        }
+
+        .checkbtn span:nth-child(3) {
+            top: 14px;
+        }
+
+
+
+        @media(max-width:992px) {
+            .main-bar {
+                padding: 0 10%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 40px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 350px;
+                height: 100vh;
+                background: #22272b;
+                top: 68px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: block;
+                width: 100%;
+                z-index: 9999;
+                margin-top: 36px;
+            }
+            .logo-header a{
+                left: auto;
+            }
+        }
+
+        @media(max-width:400px) {
+            .checkbtn {
+                display: block;
+                margin-right: 20px;
+            }
+        }
+
+        @media(max-width:380px) {
+            .checkbtn {
+                display: block;
+                margin-right: -10px;
+            }
+        }
+
+        @media(max-width:320px) {
+            nav ul {
+                display: block;
+                width: 100%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: -20px;
+            }
+
+        }
+
+
+
+        /* TEAM STYLING */
+
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+        @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .team-section {
+            background: url('https://img5.goodfon.com/wallpaper/nbig/5/69/temnyi-fon-listia-material-dizain.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 70px 15px 30px;
+        }
+
+        .container {
+            max-width: 1170px;
+            margin: auto;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .te {
+            color: rgb(255, 255, 255);
+            text-shadow: 5px 3px 2px #CE5937;
+        }
+
+        .team-section .section-title {
+            flex-basis: 100%;
+            max-width: 100%;
+            margin-bottom: 70px;
+        }
+
+        .team-section .section-title h1 {
+            font-size: 60px;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+            color: orange;
+            font-weight: 700;
+            text-shadow: 5px 3px 2px #CE5937;
+        }
+
+        .team-section .section-title p {
+            font-size: 22px;
+            text-align: center;
+            margin: 15px 0 0;
+            color: #ffffff;
+        }
+
+        .team-section .team-items {
+
+            flex-basis: 100%;
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .team-section .team-items .item {
+            flex-basis: calc(25% - 30px);
+            max-width: calc(45% - 30px);
+            transition: all .5s ease;
+            margin-bottom: 70px;
+        }
+
+        .team-section .team-items .item img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+        }
+
+        .team-section .team-items .item .inner {
+            position: relative;
+            z-index: 11;
+            padding: 0 15px;
+        }
+
+        .team-section .team-items .item .inner .info {
+            background-color: #009688;
+            text-align: center;
+            padding: 20px 15px;
+            border-radius: 8px;
+            transition: all .5s ease;
+            margin-top: -40px;
+        }
+
+        .team-section .team-items .item:hover .info {
+            transform: translateY(-20px);
+
+        }
+
+        .team-section .team-items .item:hover {
+            transform: translateY(-20px);
+        }
+
+        .team-section .team-items .item .inner .info h5 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .team-section .team-items .item .inner .info p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #c5c5c5;
+            margin: 10px 0 0;
+        }
+
+        .team-section .team-items .item .inner .info .social-links {
+            padding-top: 15px;
+        }
+
+        .team-section .team-items .item .inner .info .social-links a {
+            display: inline-block;
+            height: 32px;
+            width: 32px;
+            background-color: #ffffff;
+            color: #009688;
+            border-radius: 50%;
+            margin: 0 2px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 16px;
+            transition: all .5s ease;
+        }
+
+        .team-section .team-items .item .inner .info .social-links a:hover {
+            box-shadow: 0 0 10px #000;
+        }
+
+
+        /*responsive*/
+        @media(max-width: 991px) {
+            .team-section .team-items .item {
+                flex-basis: calc(50% - 30px);
+                max-width: calc(50% - 30px);
+
+            }
+        }
+
+        @media(max-width: 767px) {
+            .team-section .team-items .item {
+                flex-basis: calc(100%);
+                max-width: calc(100%);
+
+            }
+
+        }
+
+        @media(max-width:450px) {
+            .section-title .te {
+                font-size: 50px;
+            }
+
+            .section-title .te-1 {
+                font-size: 53px;
+            }
+
+            .team-section {
+                background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+            }
+
+            .gotop {
+                display: none;
+            }
+
+        }
+
+        @media(max-width:400px) {
+            .section-title .te-1 {
+                font-size: 48px;
+            }
+
+            .team-section {
+                background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+            }
+        }
+
+        @media(max-width:377px) {
+            .section-title .te-1 {
+                font-size: 44px;
+            }
+
+            .team-section .team-items .item {
+                max-width: 300px;
+
+            }
+        }
+
+        @media(max-width:330px) {
+            .section-title .te-1 {
+                font-size: 40px;
+            }
+
+            .section-title .te {
+                font-size: 49px;
+            }
+        }
+
+        .section {
+            width: 100%;
+            height: 300vh;
+
+        }
+
+        .gotop {
+            color: white;
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background: #27ae60 no-repeat;
+
+            bottom: 30px;
+            right: 50px;
+            text-decoration: none;
+            text-align: center;
+            line-height: 50px;
+            font-size: 30px;
+            border-radius: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section class=".section">
+
+
+        <a class="gotop" href="#"><i class="fa fa-arrow-up"></i> </a>
+        <div class="scrolltotop"></div>
+    </section>
+
+    <!--NAVIGATION BAR-->
+    <div class="main-bar">
+        <nav>
+            <input id="check" type="checkbox">
+            <label for="check" class="checkbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-header">
+                <a href="index.html"><img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png"></a>
+
+            </div>
+
+            <ul>
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="event.html">Events</a> </li>
+                <li><a href="team.html">Team</a> </li>
+                <li><a href="contact.html" target="blank">Contact Us</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+                <li><a href="certificate.html">Verify Certificates</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h1><span class="te-1">MANAGEMENT</span> <span class="te">TEAM</span></h1>
+                    <p>“Coming together is a beginning ❤.<br> Keeping together is progress 🙌.<br> Working together is
+                        success 💯.”</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="team-items">
+
+                    <div class="item">
+                        <img src="prashant.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Prashant Kumar</h5>
+                                <p>CEO</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="sunaina-2.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Suniana Arora</h5>
+                                <p>Co-CEO</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="sagarika-2.jpg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Sagarika Reddi</h5>
+                                <p>HR</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="chetan-5.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>L Chetan</h5>
+                                <p>Web Developer</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="deekshit.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Shraddha Singh</h5>
+                                <p>Event Manager</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="aditya.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Adity Kumar</h5>
+                                <p>Social Media Head</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="lav.jpeg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Lav Kumar</h5>
+                                <p>Head Of Content</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="team-4.jpg" alt="team" />
+                        <div class="inner">
+                            <div class="info">
+                                <h5>Bishwajeet Kumar</h5>
+                                <p>Graphical Designer</p>
+                                <div class="social-links">
+                                    <a href=""><span class="fa fa-facebook"></span></a>
+                                    <a href=""><span class="fa fa-twitter"></span></a>
+                                    <a href=""><span class="fa fa-linkedin"></span></a>
+                                    <a href=""><span class="fa fa-whatsapp"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- SECOND PART -->
+
+    <div class="clearfix"> </div>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

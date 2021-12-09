@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Certificates</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+        /* NAV BAR */
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        :root {
+            --main-color: #d3ad7f;
+            /* --black: #13131a; */
+            /* --bg: #010103; */
+            --border: .1rem solid rgba(255, 255, 255, .3);
+        }
+
+
+        body {
+            background-color: black;
+            font-family: 'Poppins', sans-serif;
+
+
+        }
+
+        .main-bar {
+            background-color: #22272b !important;
+            display: flow-root;
+            padding: 0 10%;
+
+            width: 100%;
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .logo-header {
+            display: table;
+            float: left;
+            vertical-align: middle;
+            padding: 0;
+            color: #efbb20;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 180px;
+            height: 68px;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+
+        }
+
+        .logo-header:before {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: -50px;
+            width: 50%;
+            transform: skew(30deg);
+            background-color: #ffe10a;
+        }
+
+        .logo-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: 10%;
+            width: 2000px;
+            background-color: #ffe10a;
+        }
+
+        .logo-header a {
+            text-decoration: none;
+            color: #22272b;
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 0px;
+            position: relative;
+            left: -50px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 100px;
+            border-radius: 14px;
+
+        }
+
+        nav li.active a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+        nav li a {
+            padding: 15px 25px;
+            border: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            opacity: 1;
+            text-decoration: none;
+            transition: all 0.5s;
+            border-radius: 14px;
+        }
+
+        nav li:hover a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+
+
+        @media(max-width:1250px) {
+            .main-bar {
+                padding: 0 2%;
+            }
+
+            nav li a {
+                padding: 15px 20px;
+            }
+        }
+
+        .checkbtn {
+            float: right;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            top: 25px;
+            display: none;
+        }
+
+        .checkbtn span {
+            background-color: #fff;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0);
+            transition: 0.25s ease-in-out;
+        }
+
+        .checkbtn span:nth-child(1) {
+            top: 0;
+        }
+
+        .checkbtn span:nth-child(2) {
+            top: 7px;
+        }
+
+        .checkbtn span:nth-child(3) {
+            top: 14px;
+        }
+
+
+
+        @media(max-width:992px) {
+            .main-bar {
+                padding: 0 10%;
+            }
+            .logo-header a{
+                position: relative;
+                left: auto;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 40px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 350px;
+                height: 100vh;
+                background: #22272b;
+                top: 68px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: block;
+                width: 100%;
+            }
+            .logo-header a{
+                position: relative;
+                left: auto;
+            }
+        }
+
+        @media(max-width:400px) {
+            .checkbtn {
+                display: block;
+                margin-right: 20px;
+            }
+            .logo-header a{
+                position: relative;
+                left: auto;
+            }
+        }
+
+        @media(max-width:320px) {
+            nav ul {
+                display: block;
+                width: 100%;
+            }
+            .logo-header a{
+                position: relative;
+                left: auto;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 0px;
+            }
+
+        }
+
+        /* SEARCH */
+        body {
+            margin: 0;
+            padding: 0;
+            font-familly: "Montsserat";
+            
+        }
+
+        .searchbox {
+            width: 90%;
+            margin: 10px auto;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .header {
+            
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+            border-radius: 50px;
+        }
+
+        h1 {
+            background-color: #4158D0;
+background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            color: white;
+            margin: 0;
+            margin-bottom: 40px;
+            
+        }
+
+        #value {
+            border: none;
+            font-size: 20px;
+            background: #2c3e50;
+            padding: 20px;
+            width: 80%;
+            border-radius: 50px;
+            color: white;
+        }
+
+        .container {
+            
+            padding: 20px;
+            padding-left: 100px;
+            border-radius: 50px;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+           
+            
+        }
+
+        .profile {
+            margin: 6px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 300;
+            color: white;
+        }
+        @media(max-width:500px)
+        {
+            *{
+                padding: 0;
+               
+            }
+            .container{
+                padding-left: 0;
+
+                display:flow-root;
+                
+                
+            }
+            .header h1{
+                font-size: 40px;
+            }
+            .gotop{
+                display: none;
+            }
+            #value{
+                font-size: 20px;
+                width: auto;
+            }
+            .searchbox{
+                font-size: 20px;
+                width: auto;
+            }
+        }
+        .section{
+        width: 100%;
+        height: 300vh;
+        
+    }
+    .gotop{
+        color: white;
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: #27ae60 no-repeat;
+        
+        bottom: 30px;
+        right: 50px;
+        text-decoration: none;
+        text-align: center;
+        line-height: 50px;
+        font-size: 30px;
+        border-radius: 50px;
+        
+    }
+    </style>
+</head>
+
+<body>
+    <section class=".section">
+
+   
+    <a class="gotop" href="#"><i class="fa fa-arrow-up"></i> </a> 
+    <div class="scrolltotop"></div>
+</section>
+    <div class="main-bar">
+        <nav>
+            <input id="check" type="checkbox">
+            <label for="check" class="checkbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-header">
+                <a href="index.html"><img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png"></a>
+
+            </div>
+
+            <ul>
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="event.html">Events</a> </li>
+                <li><a href="team.html">Team</a> </li>
+                <li><a href="contact.html" target="blank">Contact Us</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+                <li><a href="certificate.html">Verify Certificates</a> </li>
+            </ul>
+        </nav>
+    </div>
+
+
+        <div class="searchbox">
+            <div class="header">
+                <h1>Verify Your Certificates</h1>
+                <input type="text" id="value" placeholder="Enter Your Name Or Certificate Number">
+            </div>
+            <div class="container">
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">Jamal Hassouni-safdhkdsdfff</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">S</span>
+                    <span class="name">Simon Daniels</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">Jamal Hassouni-safdhkdsdfff</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">S</span>
+                    <span class="name">Simon Daniels</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">Z</span>
+                    <span class="name">Zakariae Laachir</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">M</span>
+                    <span class="name">Mohammed Azmi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">J</span>
+                    <span class="name">John Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">C</span>
+                    <span class="name">Celia Wood</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">A</span>
+                    <span class="name">Ali Mustapha</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">K</span>
+                    <span class="name">Khalid Abbsi</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">H</span>
+                    <span class="name">Hamza Badwi</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">I</span>
+                    <span class="name">Ilyass Mohammed</span>
+                </div>
+
+                <div class="profile">
+                    <span class="icon">O</span>
+                    <span class="name">Oussama Doe</span>
+                </div>
+                <div class="profile">
+                    <span class="icon">D</span>
+                    <span class="name">Danilell spnacer</span>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+<script>
+
+document.getElementById("value").addEventListener("keyup", filterSearch);
+function filterSearch(){
+   var value,name,profile,i;
+   value = document.getElementById('value').value.toUpperCase();
+profile = document.getElementsByClassName('profile');
+  for(i=0;profile.length;i++){
+    name = profile[i].getElementsByClassName('name');
+    if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+      profile[i].style.display ="flex";
+    }else{
+      profile[i].style.display = "none";
+    }
+  }  
+}
+
+</script>
+</body>
+
+</html>

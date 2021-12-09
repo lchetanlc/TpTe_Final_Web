@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="TpTe_Logo-removebg-preview.png" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+    <title>About | Today's Proggrammer Tomorrow's Engineer</title>
+    <style type="text/css">
+        * {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .2s linear;
+        }
+
+        body {
+            background-color: black;
+            font-family: 'Poppins', sans-serif;
+
+
+        }
+
+        .main-bar {
+            background-color: #22272b !important;
+            display: flow-root;
+            padding: 0 10%;
+
+
+            width: 100%;
+
+        }
+
+        #check {
+            display: none;
+        }
+
+        .logo-header {
+            display: table;
+            float: left;
+            vertical-align: middle;
+            padding: 0;
+            color: #efbb20;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            width: 180px;
+            height: 68px;
+            position: relative;
+            z-index: 9;
+            transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+
+        }
+
+        .logo-header:before {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: -50px;
+            width: 50%;
+            transform: skew(30deg);
+            background-color: #ffe10a;
+        }
+
+        .logo-header:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            z-index: -1;
+            right: 10%;
+            width: 2000px;
+            background-color: #ffe10a;
+        }
+
+        .logo-header a {
+            text-decoration: none;
+            color: #22272b;
+            font-size: 33px;
+            font-weight: 600;
+            line-height: 0px;
+            position: relative;
+            left: -50px;
+        }
+
+        ul {
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 100px;
+            border-radius: 14px;
+
+        }
+
+        nav li.active a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+        nav li a {
+            padding: 15px 25px;
+            border: 0;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            opacity: 1;
+            text-decoration: none;
+            transition: all 0.5s;
+            border-radius: 14px;
+        }
+
+        nav li:hover a {
+            color: #020101;
+            background-color: #fddb0d;
+            border-radius: 14px;
+        }
+
+
+
+        @media(max-width:1250px) {
+            .main-bar {
+                padding: 0 2%;
+            }
+
+            nav li a {
+                padding: 15px 20px;
+            }
+        }
+
+        .checkbtn {
+            float: right;
+            width: 20px;
+            height: 18px;
+            position: relative;
+            transform: rotate(0);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+            top: 25px;
+            display: none;
+        }
+
+        .checkbtn span {
+            background-color: #fff;
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            border-radius: 1px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0);
+            transition: 0.25s ease-in-out;
+        }
+
+        .checkbtn span:nth-child(1) {
+            top: 0;
+        }
+
+        .checkbtn span:nth-child(2) {
+            top: 7px;
+        }
+
+        .checkbtn span:nth-child(3) {
+            top: 14px;
+        }
+
+
+
+        @media(max-width:992px) {
+            .main-bar {
+                padding: 0 10%;
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: 40px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 350px;
+                height: 100vh;
+                background: #22272b;
+                top: 68px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 560px) {
+            nav ul {
+                display: block;
+                width: 100%;
+                margin-top: 35px;
+                z-index: 999;
+               
+            }
+            .logo-header a{
+                left: auto;
+            }
+        }
+
+        @media(max-width:400px) {
+            .checkbtn {
+                display: block;
+                margin-right: 0px;
+            }
+        }
+
+        @media(max-width:320px) {
+            nav ul {
+                display: block;
+                width: 100%;
+
+            }
+
+            .checkbtn {
+                display: block;
+                margin-right: -10px;
+            }
+
+        }
+
+        .main-heading {
+            color: white;
+            text-align: center;
+        }
+
+        .main-heading h1 {
+            margin-top: 30px;
+            font-size: 60px;
+        }
+
+        .main-heading p {
+            margin-top: 20px;
+            font-size: 30px;
+        }
+
+        .main-heading h1 span {
+            color: #efbb20;
+        }
+
+        .main-heading p span {
+            color: #efbb20;
+        }
+
+        /* Team */
+        .about {
+            margin: 50px;
+        }
+
+        .about .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            padding: 10px;
+        }
+
+
+
+        .about .row .image {
+            flex: 1 2 20rem;
+
+        }
+
+        .about .row .image img {
+            width: 70%;
+            height: 60vh;
+            margin: 0%;
+            position: relative;
+            left: 100px;
+            border-radius: 500px;
+        }
+
+        .about .row .content-about {
+            flex: 1 1 25rem;
+            padding: 2rem;
+            font-size: 2rem;
+
+        }
+
+        .about .row .content-about h3 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .about .row .content-about p {
+            font-size: 1.3rem;
+            color: #ccc;
+            padding: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .content-about .btn-home {
+            padding: 10px;
+            color: white;
+            background-color: orange;
+            display: grid;
+            margin: 0;
+            text-align: center;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 3.5rem;
+            margin-top: 30px;
+        }
+
+        .about {
+            margin: 50px;
+        }
+
+        .about .row-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            padding: 10px;
+        }
+
+
+
+        .about .row-1 .image {
+            flex: 1 2 20rem;
+
+        }
+
+        .about .row-1 .image img {
+            width: 70%;
+            height: 50vh;
+            margin: 0%;
+            position: relative;
+
+            border-radius: 500px;
+        }
+
+        .about .row-1 .content-about {
+            flex: 1 1 25rem;
+            padding: 2rem;
+            font-size: 2rem;
+
+        }
+
+        .about .row-1 .content-about h3 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+
+        .about .row-1 .content-about p {
+            font-size: 1.3rem;
+            color: #ccc;
+            padding: 0rem 0;
+            line-height: 1.8;
+        }
+
+        .content-about .btn-home {
+            padding: 10px;
+            color: white;
+            background-color: orange;
+            display: grid;
+            margin: 0;
+            text-align: center;
+        }
+
+        .heading {
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 3.5rem;
+            margin-top: 30px;
+        }
+
+        @media(max-width:500px) {
+            .about .row .image img {
+
+                width: 310px;
+                height: 30vh;
+                margin: 0;
+                position: relative;
+                left: 0;
+
+
+            }
+
+
+            .about .row .content-about {
+                text-align: center;
+                width: 320px;
+
+                padding-top: 1.5rem;
+
+            }
+
+            .about .row .content-about h3 {
+                font-size: 1.5rem;
+                color: #fff;
+            }
+
+            .about .row .image img {
+                width: 320px;
+                height: 50vh;
+                margin: auto;
+                position: relative;
+                left: 0;
+
+
+            }
+
+            .about .row {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .about .row .content-about {
+                text-align: center;
+                width: 320px;
+                margin: 0;
+
+                padding-top: 1.5rem;
+
+            }
+
+            .about .row .content-about h3 {
+                font-size: 1.5rem;
+                color: #fff;
+            }
+
+            .main-heading h1 {
+                font-size: 2rem;
+            }
+
+            .heading {
+                font-size: 2rem;
+            }
+        }
+
+        /*FAQ*/
+        .faq-bg {
+
+
+            background: #000000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHhN9tQiuFIFgadszAcfKXlwdbz0JbTihWDjcaVv_xwAs1JC6UryY2RfRLsqKFLqSBl84&usqp=CAU") no-repeat scroll 3% 85%;
+            margin-bottom: 30px;
+        }
+
+        .faqs {
+            font-family: "Quicksand", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+
+
+
+
+        }
+
+        .faqs .title {
+            font-size: 3rem;
+            font-weight: lighter;
+            margin: 2rem 0rem;
+        }
+
+        .faq {
+            max-width: 800px;
+            font-weight: lighter;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid white;
+            cursor: pointer;
+
+        }
+
+        .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .question h3 {
+            font-size: 1.8rem;
+            transition: 1.4s ease-in-out;
+            font-weight: 100;
+
+        }
+
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1.4s ease;
+        }
+
+        .answer p {
+            padding-top: 1rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .faq.active .answer {
+            max-height: 3000px;
+            animation: 1s ease-in-out fade;
+        }
+
+        .faq.active svg {
+            transform: rotate(180deg);
+        }
+
+        svg {
+            transition: transform 0.5s ease-in;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+
+            }
+        }
+
+        @media(max-width:500px) {
+            .faqs {
+                max-width: 300px;
+                margin: auto;
+            }
+
+            .faq-bg {
+
+                background-repeat: no-repeat;
+                background-size: 100px;
+                background-size: center top;
+                background-clip: border-box;
+                background: #000000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHhN9tQiuFIFgadszAcfKXlwdbz0JbTihWDjcaVv_xwAs1JC6UryY2RfRLsqKFLqSBl84&usqp=CAU") no-repeat scroll 60px 1px;
+            }
+
+            .faqs .title {
+                margin-top: 250px;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            background: #3586ff;
+            min-height: 0px;
+            padding: 0px 0px;
+            margin-top: 130px;
+
+        }
+
+        footer .social_icons,
+        footer .menu-footer {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        footer .social_icons li,
+        footer .menu-footer li {
+            list-style: none;
+        }
+
+        footer .social_icons li a,
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+        }
+
+        footer .social_icons li a:hover {
+            transform: translateY(-10px);
+            color: red;
+        }
+
+        footer .menu-footer li a {
+            font-size: 2em;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+        }
+
+        footer .menu-footer li a:hover {
+            opacity: 1;
+        }
+
+        footer p {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        footer .wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url(wave-1.png);
+            background-size: 1000px 100px;
+        }
+
+        footer .wave#wave1 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave2 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 10px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        footer .wave#wave3 {
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWave 4s linear infinite;
+        }
+
+        footer .waves#wave4 {
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 20px;
+            animation: animateWave_02 4s linear infinite;
+        }
+
+        @keyframes animateWave {
+            0% {
+                background-position-x: 1000px;
+            }
+
+            100% {
+                background-position-x: 0px;
+            }
+        }
+
+        @keyframes animateWave_02 {
+            0% {
+                background-position-x: 0px;
+            }
+
+            100% {
+                background-position-x: 1000px;
+            }
+        }
+
+        @media(max-width:500px) {
+            .menu-footer {
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+
+        .footer-image img {
+            height: 200px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--NAV BAR-->
+    <div class="main-bar">
+        <nav>
+            <input id="check" type="checkbox">
+            <label for="check" class="checkbtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <div class="logo-header">
+                <a href="index.html"><img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png"></a>
+
+            </div>
+
+            <ul>
+                <li class="active"><a href="index.html">Home</a> </li>
+                <li><a href="event.html">Events</a> </li>
+                <li><a href="team.html">Team</a> </li>
+                <li><a href="contact.html" target=”_blank”>Contact Us</a> </li>
+                <li><a href="about.html">About Us</a> </li>
+                <li><a href="certificate.html">Verify Certificates</a> </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-heading">
+        <h1>Welcome To <span>TpTe</span></h1>
+        <p>Path To<span> Immense Possibilities</span></p>
+    </div>
+    <!--TEXT_SLIDER-->
+    <section class="about" id="about">
+
+
+
+        <div class="row">
+
+            <div class="image " data-aos="zoom-in" data-aos-duration="2000">
+                <img src="https://image.freepik.com/free-vector/teamwork-people-with-puzzle-pieces_24877-54950.jpg"
+                    alt="">
+            </div>
+
+            <div class="content-about" data-aos="zoom-out" data-aos-duration="2000">
+                <h3>What is TPTE ?</h3>
+                <p>Today's Programmer Tomorrow's Engineer (TPTE) is a certified student organization of Lovely
+                    Professional University.
+                </p>
+                <p>TPTE comes under the 'Academic and Technical' category.The main motive of our organization is to
+                    provide assistance to the students by organising various events and workshops.
+                    We as a team try our level best to deliver the desired goals of the students.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <section class="about" id="about">
+
+
+        <div class="row">
+
+
+
+            <div class="content-about" data-aos="zoom-out" data-aos-duration="2000">
+                <h3>Why is TPTE ?</h3>
+                <p>We exist for the purpose of bringing students together, helping them acclimate to life at the
+                    university, connecting them to other students, as well as alumni and can help students develop
+                    transferable skills.
+
+                </p>
+                <p>In TpTe, students can enhance their skills by involving in various activities conducted by the
+                    organization in their respective domains.Through organizations, students can meet with each others,
+                    grow as individuals , and help find their place at school. It’s also a great way for students to
+                    relax and have fun with their peers.
+
+
+                </p>
+
+            </div>
+            <div class="image " data-aos="zoom-in" data-aos-duration="2000">
+                <img src="https://img.freepik.com/free-vector/events-concept-illustration_114360-931.jpg?size=626&ext=jpg"
+                    alt="">
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <div class="faq-bg">
+        <section class="faqs">
+            <h2 class="title">FAQs</h2>
+            <div class="faq">
+                <div class="question">
+                    <h3>How To Join TpTe ?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke=white stroke-width="7" stroke-line="round" />
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae adipisci, beatae corporis ducimus
+                        quam
+                        dolores cupiditate doloribus provident, tenetur, totam amet alias reiciendis dolor nihil? Quia
+                        consequuntur sunt magnam libero!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faqs">
+
+            <div class="faq">
+                <div class="question">
+                    <h3>How To Join TpTe ?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke=white stroke-width="7" stroke-line="round" />
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae adipisci, beatae corporis ducimus
+                        quam
+                        dolores cupiditate doloribus provident, tenetur, totam amet alias reiciendis dolor nihil? Quia
+                        consequuntur sunt magnam libero!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faqs">
+
+            <div class="faq">
+                <div class="question">
+                    <h3>How To Join TpTe ?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke=white stroke-width="7" stroke-line="round" />
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae adipisci, beatae corporis ducimus
+                        quam
+                        dolores cupiditate doloribus provident, tenetur, totam amet alias reiciendis dolor nihil? Quia
+                        consequuntur sunt magnam libero!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faqs">
+
+            <div class="faq">
+                <div class="question">
+                    <h3>How To Join TpTe ?</h3>
+                    <svg width="15" height="10" viewbox="0 0 42 25">
+                        <path d="M3 3L21 21L39 3" stroke=white stroke-width="7" stroke-line="round" />
+                    </svg>
+                </div>
+                <div class="answer">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae adipisci, beatae corporis ducimus
+                        quam
+                        dolores cupiditate doloribus provident, tenetur, totam amet alias reiciendis dolor nihil? Quia
+                        consequuntur sunt magnam libero!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!--FOOTER-->
+
+    <footer>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <div class="footer-image">
+            <img height="100px" width="200px" src="TpTe_Logo-removebg-preview.png">
+        </div>
+        <ul class="social_icons">
+            <li><a href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                </a></li>
+            <li><a href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+        </ul>
+        <ul class="menu-footer">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="event.html">Events</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About US</a></li>
+        </ul>
+        <p>® TpTe All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        const faqs = document.querySelectorAll(".faq");
+        faqs.forEach(faq => {
+            faq.addEventListener("click", () => {
+                faq.classList.toggle("active");
+            })
+        })
+    </script>
+</body>
+
+</html>
